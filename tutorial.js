@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-const pool = new pg.Pool({
+let pool = new pg.Pool({
     host: "localhost",
     port: 5432,
     database: "NCPilot",
@@ -12,15 +12,15 @@ const pool = new pg.Pool({
     password: process.env.PASSWORD
 });
 
-var result = "No data";
-const getData = async () => {
+let result = "No data";
+let getData = async () => {
     result = await pool.query('select first_name, last_name, primary_email from "NCPilotDB".subscribers where last_name = \'Simpson\';');
     console.log(result.rows);
 };
 
 getData();
 
-const options = {};
+let options = {};
   
   https2.createServer(options, (req, res) => {
     res.writeHead(200, {'Content-Type': 'text/plain'});
